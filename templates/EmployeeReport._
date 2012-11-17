@@ -1,0 +1,23 @@
+<h3><%= name %></h3>
+<div id="graph" style="width:100%;height:300px;"></div>
+<br />
+<div id="tabular">
+  <table class="table table-striped table-hover">
+    <thead><tr><th>Year</th><th>Title</th><th>Department</th><th>Salary</th></tr></thead>
+    <tbody>
+      <% _.each(years, function(records, year) { %>
+        <% var rowspan = _.size(records); %>
+        <% _.each(records, function(record) { %>
+          <tr>
+            <% if (rowspan === _.size(records)) { %>
+              <td rowspan="<%= rowspan-- %>"><%= record.year %></td>
+            <% } %>
+            <td><%= record.title %></td>
+            <td><%= record.department %></td>
+            <td class="money"><%= record.salary %></td>
+          </tr>
+        <% }); %>
+      <% }); %>
+    </tbody>
+  </table>
+</div>

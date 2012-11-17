@@ -1,0 +1,8 @@
+<div class="error-page limiter">
+  <h2><%= status %></h2>
+  <div class="alert alert-error">
+    <%= message %>
+  </div>
+  <br />
+  <a href="/" class="btn btn-inverse"><i class="icon-home icon-white"></i> Return to homepage</a>
+</div>

@@ -1,0 +1,16 @@
+<h1>About</h1>
+
+<p><a href="http://www.usalaries.com" class="muted">uSalaries</a> is a salary search tool for certain public universities.</p>
+
+<p>
+  This tool is made by <a href="http://www.vkareh.net" class="muted">Victor Kareh</a> using <a href="http://http://www.nodejs.org/" class="muted">node.js</ a>, <a href="http://expressjs.com/" class="muted">Express</a>, <a href="http://documentcloud.github.com/backbone/" class="muted">Backbone.js</a>, <a href="http://www.flotcharts.org/" class="muted">Flot</a>, and several other modules for data manipulation and display.
+  The layout is composed using <a href="http://twitter.github.com/bootstrap/" class="muted">Twitter Bootstrap</a> and uses some <a href="http://glyphicons.com/" class="muted">Glyphicons</a>.
+  The website itself is hosted on <a href="http://www.nodejitsu.com/" class="muted">nodejitsu</a> and the data is hosted on <a href="http://www.cloudant.com" class="muted">Cloudant</a>.
+</p>
+
+<p>
+  The display of this salary data is in accordance with each state's Freedom of Information Act.
+  The data itself is downloaded from each university website and converted to its current format by means of <a href="http://tojson.org" class="muted">.toJSON().org</a>.
+  The data has been processed to make it easier to use and display on this website, but it has not been altered otherwise.
+  If you feel there are errors or mistakes on the data or its display, feel free to <a href="http://www.vkareh.net/contact.html" class="muted">contact me</a>.
+</p>

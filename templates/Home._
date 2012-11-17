@@ -1,0 +1,8 @@
+<div class="page-header">
+  <h1>uSalaries <small>a salary search tool for universities</small></h1>
+</div>
+<ul class="nav nav-pills nav-stacked">
+  <% _.each(universities, function(label, id) { %>
+    <li><a href="/u/<%= id %>"><%= label %> <i class="icon-chevron-right icon-white" /></a></li>
+  <% }); %>
+</ul>

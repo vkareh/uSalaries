@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= title %></title>
+    <link rel="shortcut icon" href="/assets/uSalaries/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/assets/uSalaries/bootstrap/docs/assets/css/bootstrap.css?<%= version %>" media="screen" />
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }   
+    </style>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/assets/uSalaries/bootstrap/docs/assets/js/bootstrap.js?<%= version %>"></script>
+    <script src="/assets/bones/all.js?<%= version %>"></script>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-5211967-14']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">uSalaries</a>
+          <ul class="nav">
+            <li><a href="/about">About</a></li>
+            <li><a href="http://www.vkareh.net/contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="page" class="container clearfix">
+      <div id="message"></div>
+      <div id="main"><%= main %></div>
+    </div>
+    <hr />
+    <footer class="container muted"><small>&copy; 2012 <a class="muted" href="http://www.vkareh.net">Victor Kareh</a></small></footer>
+    <script><%= startup %></script>
+  </body>
+</html>

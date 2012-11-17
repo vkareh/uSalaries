@@ -1,0 +1,7 @@
+<p class="lead">Search for <%= university %> employees</p>
+<div class="input-append">
+  <input type="search" id="search" placeholder="Search..." />
+  <span class="add-on"><i class="icon-search"></i></span>
+</div>
+<br />
+<div id="results"></div>
