@@ -10,7 +10,7 @@
 
 <p>
   The display of this salary data is in accordance with each state's Freedom of Information Act.
-  The data itself is downloaded from each university website and converted to its current format by means of <a href="http://tojson.org" class="muted">.toJSON().org</a>.
+  The data itself is downloaded from public sources and converted to its current format by means of <a href="http://tojson.org" class="muted">.toJSON().org</a>.
   The data has been processed to make it easier to use and display on this website, but it has not been altered otherwise.
   If you feel there are errors or mistakes on the data or its display, feel free to <a href="http://www.vkareh.net/contact.html" class="muted">contact me</a>.
 </p>
