@@ -4,7 +4,8 @@ router.prototype.routes = {
     '/': 'home',
     '/about': 'about',
     '/u/:university': 'search',
-    '/u/:university/employee/:name': 'employee'
+    '/u/:university/employee/:name': 'employee',
+    '/robots.txt': 'robots'
 }
 
 // Homepage
@@ -52,6 +53,12 @@ router.prototype.employee = function(university, employee) {
             router.send(views.Error, {message: employee + ' not found'});
         }
     })));
+}
+
+// robots.txt
+// ----------
+router.prototype.robots = function() {
+    this.res.send('User-agent: *\nDisallow: /data/', {'Content-Type': 'text/plain'});
 }
 
 // Helper to assemble the page title
