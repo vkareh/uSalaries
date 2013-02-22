@@ -1,6 +1,6 @@
 {
   "name": "uSalaries",
-  "version": "0.0.1-4",
+  "version": "0.0.1-8",
   "author": {
     "name": "Victor Kareh",
     "url": "http://www.vkareh.net"
@@ -9,7 +9,7 @@
     "accounting": "git://github.com/josscrowcroft/accounting.js.git",
     "bones": "git://github.com/vkareh/bones.git",
     "cradle": "0.6.x",
-    "jStat": "0.0.x"
+    "jStat": "git://github.com/jstat/jstat.git"
   },
   "subdomain": "usalaries",
   "domains": [
