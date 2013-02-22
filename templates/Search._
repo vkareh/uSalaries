@@ -1,7 +1,7 @@
 <p class="lead">Search for <%= university %> employees</p>
 <div class="input-append">
   <input type="search" id="search" placeholder="Search..." />
-  <span class="add-on"><i class="icon-search"></i></span>
+  <span class="add-on search-add-on"><i class="icon-search"></i></span>
 </div>
 
 <form class="form-horizontal pull-right">
@@ -11,6 +11,7 @@
     <label class="control-label" for="campus">Campus</label>
     <div class="controls">
       <select id="campus"></select>
+      <span class="add-on campus-add-on"></span>
     </div>
   </div>
 
@@ -18,6 +19,7 @@
     <label class="control-label" for="department">Department</label>
     <div class="controls">
       <select id="department"></select>
+      <span class="add-on department-add-on"></span>
     </div>
   </div>
 
@@ -25,10 +27,13 @@
     <label class="control-label" for="position">Position</label>
     <div class="controls">
       <select id="position"></select>
+      <span class="add-on position-add-on"></span>
     </div>
   </div>
 
+  <span class="stats-loading pull-right"></span>
   <div id="graph" class="pull-right" style="width:480px;height:240px;"></div>
+
 </form>
 
 <br />

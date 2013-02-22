@@ -40,7 +40,7 @@ view.prototype.search = function(event) {
         } else {
             // Show throbber
             $ajaxLoader = make('img', {src: '/assets/uSalaries/images/ajax-loader.gif'});
-            $('span.add-on').empty().append($ajaxLoader);
+            $('span.search-add-on').empty().append($ajaxLoader);
         }
 
         // Fetch employee names
@@ -55,7 +55,12 @@ view.prototype.search = function(event) {
                 });
                 // Remove throbber
                 var $searchIcon = make('i', {class: 'icon-search'});
-                $('span.add-on').empty().append($searchIcon);
+                $('span.search-add-on').empty().append($searchIcon);
+            },
+            error: function(err) {
+                // Remove throbber
+                var $searchIcon = make('i', {class: 'icon-search'});
+                $('span.search-add-on').empty().append($searchIcon);
             }
         });
         
@@ -70,7 +75,17 @@ view.prototype.loadCampuses = function() {
     ,   campuses = new models.Campuses();
 
     $('#graph').empty();
-    campuses.fetch({
+
+    // Cancel any open requests
+    if (this.jqXHR && this.jqXHR.readyState === 1) {
+        this.jqXHR.abort('stale');
+    } else {
+        // Show throbber
+        $ajaxLoader = make('img', {src: '/assets/uSalaries/images/ajax-loader.gif'});
+        $('span.campus-add-on').empty().append($ajaxLoader);
+    }
+
+    this.jqXHR = campuses.fetch({
         data: {
             university: university
         },
@@ -81,6 +96,11 @@ view.prototype.loadCampuses = function() {
             campuses.forEach(function(campus) {
                 $('select#campus').append(make('option', {value: campus.get('id')}, campus.get('id')));
             });
+            // Remove throbber
+            $('span.campus-add-on').empty();
+        },
+        error: function(err) {
+            $('span.campus-add-on').empty();
         }
     });
     return this;
@@ -94,13 +114,22 @@ view.prototype.loadDepartments = function(event) {
     ,   campus = new models.Campus({id: $(event.currentTarget).val()})
     ,   departments = new models.Departments();
 
+    // Cancel any open requests
+    if (this.jqXHR && this.jqXHR.readyState === 1) {
+        this.jqXHR.abort('stale');
+    } else {
+        // Show throbber
+        $ajaxLoader = make('img', {src: '/assets/uSalaries/images/ajax-loader.gif'});
+        $('span.department-add-on').empty().append($ajaxLoader);
+    }
+
     $('#graph').empty();
     $('select#department').empty().append(make('option'));
     $('select#position').empty().append(make('option'));
     this.options.campus = campus;
     if (!campus.get('id')) return;
 
-    departments.fetch({
+    this.jqXHR = departments.fetch({
         data: {
             university: university.get('id'),
             campus: campus.get('id')
@@ -109,6 +138,11 @@ view.prototype.loadDepartments = function(event) {
             departments.forEach(function(department) {
                 $('select#department').append(make('option', {value: department.get('id')}, department.get('id')));
             });
+            // Remove throbber
+            $('span.department-add-on').empty();
+        },
+        error: function(err) {
+            $('span.department-add-on').empty();
         }
     });
     return this;
@@ -123,12 +157,21 @@ view.prototype.loadPositions = function(event) {
     ,   department = new models.Department({id: $(event.currentTarget).val()})
     ,   positions = new models.Positions();
 
+    // Cancel any open requests
+    if (this.jqXHR && this.jqXHR.readyState === 1) {
+        this.jqXHR.abort('stale');
+    } else {
+        // Show throbber
+        $ajaxLoader = make('img', {src: '/assets/uSalaries/images/ajax-loader.gif'});
+        $('span.position-add-on').empty().append($ajaxLoader);
+    }
+
     $('#graph').empty();
     $('select#position').empty().append(make('option'));
     this.options.department = department;
     if (!department.get('id')) return;
 
-    positions.fetch({
+    this.jqXHR = positions.fetch({
         data: {
             university: university.get('id'),
             campus: campus.get('id'),
@@ -138,6 +181,11 @@ view.prototype.loadPositions = function(event) {
             positions.forEach(function(position) {
                 $('select#position').append(make('option', {value: position.get('id')}, position.get('id')));
             });
+            // Remove throbber
+            $('span.position-add-on').empty();
+        },
+        error: function(err) {
+            $('span.position-add-on').empty();
         }
     });
     return this;
@@ -181,10 +229,15 @@ view.prototype.loadEmployees = function(event) {
 // ---------------------------------
 view.prototype.loadStats = function(employees) {
     var self = this
+    ,   make = this.make
     ,   university = this.options.university
     ,   campus = this.options.campus
     ,   department = this.options.department
     ,   position = this.options.position;
+
+    // Show throbber
+    $ajaxLoader = make('img', {src: '/assets/uSalaries/images/ajax-loader.gif'});
+    $('span.stats-loading').empty().append($ajaxLoader).append('&nbsp;Fetching data...');
 
     Bones.utils.fetch(employees.models, {university: university.get('id')}, function(err) {
         var years = [];
@@ -206,6 +259,9 @@ view.prototype.loadStats = function(employees) {
                 data.median.data.push([parseInt(year), jStat.median(salaries)]);
             }
         });
+
+        // Remove throbber
+        $('span.stats-loading').empty();
 
         // Plot graph
         $.plot($('#graph'), _.values(data), {
