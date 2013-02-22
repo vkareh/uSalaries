@@ -44,7 +44,7 @@
       <div id="main"><%= main %></div>
     </div>
     <hr />
-    <footer class="container muted"><small>&copy; 2012 <a class="muted" href="http://www.vkareh.net">Victor Kareh</a></small></footer>
+    <footer class="container muted"><small>&copy; 2013 <a class="muted" href="http://www.vkareh.net">Victor Kareh</a></small></footer>
     <script><%= startup %></script>
   </body>
 </html>
